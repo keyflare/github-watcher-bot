@@ -1,8 +1,7 @@
+import business.mainLogic
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.extensions.api.bot.getMe
-import dev.inmo.tgbotapi.extensions.api.send.reply
 import dev.inmo.tgbotapi.extensions.behaviour_builder.buildBehaviourWithLongPolling
-import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onCommand
 import java.io.File
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
@@ -26,11 +25,7 @@ suspend fun main(args: Array<String>) {
         // in this lambda you will be able to call methods without "bot." prefix
         val me = getMe()
 
-        // this method will create point to react on each /start command
-        onCommand("start", requireOnlyCommandInMessage = true) {
-            // simply reply :)
-            reply(it, "Hello, I am ${me.firstName}")
-        }
+        mainLogic()
 
         // That will be called on the end of bot initiation. After that println will be started long polling and bot will
         // react on your commands
