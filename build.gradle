@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
+
 buildscript {
     repositories {
         mavenCentral()
@@ -20,14 +22,23 @@ repositories {
     maven { url "https://git.inmo.dev/api/packages/InsanusMokrassar/maven" }
 }
 
+kotlin {
+    explicitApi(ExplicitApiMode.Strict)
+}
+
 dependencies {
     implementation libs.kotlin
-
     implementation libs.tgbotapi
+    implementation libs.githubApi
+
+    implementation libs.jwtApi
+    runtimeOnly libs.bundles.jwtRuntimeOnly
+
+    implementation libs.ktorNetty
 }
 
 application {
-    mainClassName = 'AppKt'
+    mainClassName = 'app.AppKt'
 }
 
 java {

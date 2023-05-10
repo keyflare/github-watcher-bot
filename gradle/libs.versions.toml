@@ -2,11 +2,19 @@
 
 kotlin = "1.8.20"
 tgbotapi = "7.1.0"
+githubApi = "1.314"
+jwt = "0.11.5"
+ktor = "2.3.0"
 
 [libraries]
 
 kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 tgbotapi = { module = "dev.inmo:tgbotapi", version.ref = "tgbotapi" }
+githubApi = { module = "org.kohsuke:github-api", version.ref = "githubApi" }
+jwtApi = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jwt" }
+jwtImpl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jwt" }
+jwtJackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jwt" }
+ktorNetty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
 
 # Libs for classpath
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -17,3 +25,6 @@ kotlin-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serializat
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
+[bundles]
+
+jwtRuntimeOnly = [ "jwtImpl", "jwtJackson" ]

@@ -9,6 +9,5 @@ settings.xml
 build/
 out/
 
-local.*
-local.*/
 secret.gradle
+.DS_Store

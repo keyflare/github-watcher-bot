@@ -1,0 +1,9 @@
+{
+  "telegramToken": "your bot token string",
+
+  "githubApplicationId": "your github app id (format: 123456)",
+  "githubPrivateKeyPath": "path to your github app private key (*.pem file)",
+  "githubClientSecret": "your github app client secret string",
+  "githubWebhookUrl": "",
+  "githubWebhookServerPort": 3000
+}
