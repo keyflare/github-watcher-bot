@@ -1,4 +1,4 @@
-package telegramBot.debug
+package telegramBot.internal.debug
 
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import kotlinx.coroutines.DelicateCoroutinesApi

@@ -1,8 +1,5 @@
 package app
 
-import telegramBot.mainLogic
-import dev.inmo.tgbotapi.extensions.api.bot.getMe
-import dev.inmo.tgbotapi.extensions.behaviour_builder.buildBehaviourWithLongPolling
 import githubEvents.api.GithubEventsInteractor
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.first
@@ -41,12 +38,5 @@ private suspend fun startGithubApp(githubEventsInteractor: GithubEventsInteracto
 }
 
 private suspend fun startTelegramBot() {
-    val bot = AppDi.telegramBot
-    val scope = CoroutineScope(Dispatchers.Default)
-
-    bot.buildBehaviourWithLongPolling(scope) {
-        val me = getMe()
-        mainLogic()
-        println(me)
-    }.join()
+    AppDi.telegramBotInteractor.startBot()
 }

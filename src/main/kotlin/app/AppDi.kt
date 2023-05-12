@@ -1,12 +1,12 @@
 package app
 
-import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.telegramBot
 import githubApp.api.GithubAppDependencies
 import githubApp.api.GithubAppInteractor
 import githubEvents.api.GithubEventsDependencies
 import githubEvents.api.GithubEventsInteractor
 import kotlinx.serialization.json.Json
+import telegramBot.api.TgBotDependencies
+import telegramBot.api.TgBotInteractor
 
 internal object AppDi {
 
@@ -24,7 +24,10 @@ internal object AppDi {
     private val startupConfig: StartupConfig by lazy { StartupConfig.load(configPath) }
 
     // Telegram Bot
-    val telegramBot: TelegramBot by lazy { telegramBot(startupConfig.telegramToken) }
+    private val telegramBotDeps: TgBotDependencies = object : TgBotDependencies {
+        override val token get() = startupConfig.telegramToken
+    }
+    val telegramBotInteractor: TgBotInteractor by lazy { TgBotInteractor(telegramBotDeps) }
 
     // Github App
     private val githubAppDeps: GithubAppDependencies = object : GithubAppDependencies {

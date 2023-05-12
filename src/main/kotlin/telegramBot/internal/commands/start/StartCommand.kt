@@ -1,4 +1,4 @@
-package telegramBot.start
+package telegramBot.internal.commands.start
 
 import dev.inmo.tgbotapi.extensions.api.send.reply
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
